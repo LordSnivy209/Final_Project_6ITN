@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jaartaak.Persistance
+namespace Jaartaak.Business
 {
-    internal class Controller
+    public class busCon
     {
     }
 }
