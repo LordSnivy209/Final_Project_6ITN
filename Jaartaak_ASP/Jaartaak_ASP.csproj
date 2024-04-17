@@ -67,12 +67,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BusinessLogin.aspx" />
     <Content Include="BusinessRegistration.aspx" />
     <Content Include="default.aspx" />
     <Content Include="UserRegistration.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogin.aspx.cs">
+      <DependentUpon>BusinessLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BusinessLogin.aspx.designer.cs">
+      <DependentUpon>BusinessLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessRegistration.aspx.cs">
       <DependentUpon>BusinessRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

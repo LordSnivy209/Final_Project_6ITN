@@ -34,22 +34,15 @@
                         <form runat="server">
                             <div class="form-group position-relative">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" runat="server" />
+                                <input type="text" class="form-control" id="username" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" runat="server" />
-                            </div>
-                            <div class="form-group position-relative">
-                                <label for="usertype">User Type</label>
-                                <select class="form-control" id="usertype" runat="server">
-                                    <option value="regular">Regular User</option>
-                                    <option value="business">Business User</option>
-                                </select>
-                                <div class="dropdown-arrow"></div>
+                                <input type="password" class="form-control" id="password" runat="server" required/>
                             </div>
                             <br />
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <p class="text-center mt-3">If you want to log in as a business, <a href="BusinessLogin.aspx">click here</a>.</p>
                         </form>
                     </div>
                 </div>
