@@ -12,7 +12,7 @@
                         <form runat="server">
                             <div class="form-group position-relative">
                                 <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName" runat="server" />
+                                <input type="text" class="form-control" id="fullName" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
                                 <label for="email">Email</label>
@@ -20,11 +20,11 @@
                             </div>
                             <div class="form-group position-relative">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" runat="server" />
+                                <input type="password" class="form-control" id="password" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
                                 <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" runat="server" />
+                                <input type="password" class="form-control" id="confirmPassword" runat="server" required/>
                             </div>
                             <br />
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
