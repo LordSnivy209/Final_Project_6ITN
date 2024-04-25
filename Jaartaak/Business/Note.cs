@@ -13,10 +13,14 @@ namespace Jaartaak.Business
         public Note(int noteID, string username, string title, string content, DateTime creationDate) 
         {
         
+
+
         }
 
         public Note(string username, string title, string content, DateTime creationDate)
         {
+
+
 
         }
     }
