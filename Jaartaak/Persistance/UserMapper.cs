@@ -40,7 +40,7 @@ namespace Jaartaak.Persistance
             return List;
         }
         //hiermee voegt de organisatie een gebruiker toe //moet aangepast worden!!!
-        public User addUserToDB(string name, string pasWord)
+        public void addUserToDB(string name, string pasWord)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
             MySqlCommand cmd = new MySqlCommand("INSERT INTO bucketlistdatabase.persoon (naamPersoon, paswoordPersoon) VALUES (@name, @pasWord)", conn);
@@ -55,11 +55,11 @@ namespace Jaartaak.Persistance
             catch (MySqlException ex)
             {
                 conn.Close();
-                return null;
+               
             }
 
             conn.Close();
-            return getUserFromDB(name, pasWord);
+
         }
         //select * from bucketlistdatabase.persoon where naamPersoon = 'TestNaam' and paswoordPersoon = '1234';
 
@@ -79,8 +79,6 @@ namespace Jaartaak.Persistance
                     Convert.ToInt32(reader["idPersoon"]),
                     Convert.ToString(reader["naamPersoon"]),
                     Convert.ToString(reader["paswoordPersoon"]));
-
-
             }
             conn.Close();
             return result;

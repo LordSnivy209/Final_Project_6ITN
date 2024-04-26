@@ -1,23 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Jaartaak_ASP._default" MasterPageFile="~/MainLayout.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .dropdown-arrow::after {
-            content: "";
-            border: solid transparent;
-            border-width: 0.4rem;
-            border-bottom-color: #000;
-            position: absolute;
-            top: calc(100% + -0.6rem);
-            left: calc(100% - 2rem); 
-            transform: translateY(-100%) rotate(180deg);
-            pointer-events: none; 
-        }
-        select.form-control:focus + .dropdown-arrow::after {
-            top: calc(100% + -1rem);
-            left: calc(100% - 2rem);
-            transform: translateY(-100%) rotate(0deg);
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
