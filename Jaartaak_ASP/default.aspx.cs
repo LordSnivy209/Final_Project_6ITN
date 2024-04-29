@@ -1,4 +1,4 @@
-﻿using Jaartaak_Domain.Business;
+﻿using Jaartaak.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,7 @@ namespace Jaartaak_ASP
 {
     public partial class _default : System.Web.UI.Page
     {
+        Controller _controller;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -38,13 +39,18 @@ namespace Jaartaak_ASP
             string password = txtPassword.Text;
             if (_controller.Login(username, password))
             {
-                Response.Redirect("ShowBucketList.aspx");
+                Response.Redirect("MainLoggedInPage.aspx");
             }
             else
             {
                 txtName.Focus();
                 Response.Write("<script>alert('Error: User not found.')</script>");
             }
+        }
+
+        protected void btnLogin_Click1(object sender, EventArgs e)
+        {
+
         }
     }
     

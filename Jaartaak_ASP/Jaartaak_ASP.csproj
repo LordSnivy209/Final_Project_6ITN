@@ -70,6 +70,7 @@
     <Content Include="BusinessLogin.aspx" />
     <Content Include="BusinessRegistration.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="MainLoggedInPage.aspx" />
     <Content Include="MainPage.aspx" />
     <Content Include="UserRegistration.aspx" />
     <Content Include="Web.config" />
@@ -103,6 +104,13 @@
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
+    <Compile Include="MainLoggedInPage.aspx.cs">
+      <DependentUpon>MainLoggedInPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainLoggedInPage.aspx.designer.cs">
+      <DependentUpon>MainLoggedInPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,9 +138,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jaartaak\Jaartaak_Domain.csproj">
-      <Project>{c6af4258-af09-46d1-83dd-e15147dd77e5}</Project>
-      <Name>Jaartaak_Domain</Name>
+    <ProjectReference Include="..\Jaartaak_Domain2\Jaartaak_Domain2.csproj">
+      <Project>{e6bedc02-32d9-4994-b613-9324ec42ae62}</Project>
+      <Name>Jaartaak_Domain2</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

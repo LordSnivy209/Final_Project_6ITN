@@ -16,14 +16,14 @@
                         <form runat="server">
                             <div class="form-group position-relative">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" runat="server" required/>
+                                <asp:TextBox type="text" class="form-control" id="txtName" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" runat="server" required/>
+                                <asplabel for="password">Password</asplabel>
+                                <asp:TextBox type="password" class="form-control" ID="txtPassword" runat="server" required></asp:TextBox>
                             </div>
                             <br />
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" class="btn btn-primary btn-block" />
                             <p class="text-center mt-3">If you want to log in as a business, <a href="BusinessLogin.aspx">click here</a>.</p>
                         </form>
                     </div>
