@@ -54,7 +54,7 @@ namespace Jaartaak_ASP
                 Response.Write("<script>alert('Registration succesful!')</script>");
                 Response.Redirect("default.aspx");
             }
-
+            //
         }
     }
 }
