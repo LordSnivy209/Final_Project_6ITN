@@ -24,30 +24,30 @@ namespace Jaartaak_ASP
         protected global::System.Web.UI.HtmlControls.HtmlInputText fullName;
 
         /// <summary>
-        /// email control.
+        /// lblPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl email;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword lblPassword;
 
         /// <summary>
-        /// password control.
+        /// lblConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword lblConfirmPassword;
 
         /// <summary>
-        /// confirmPassword control.
+        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword confirmPassword;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
     }
 }

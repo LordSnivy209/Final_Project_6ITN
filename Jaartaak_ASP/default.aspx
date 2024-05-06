@@ -16,11 +16,11 @@
                         <form runat="server">
                             <div class="form-group position-relative">
                                 <label for="username">Username</label>
-                                <asp:TextBox type="text" class="form-control" id="txtName" runat="server" required/>
+                                <asp:TextBox type="text" class="form-control" id="txtName" runat="server" required="true"/>
                             </div>
                             <div class="form-group position-relative">
                                 <asplabel for="password">Password</asplabel>
-                                <asp:TextBox type="password" class="form-control" ID="txtPassword" runat="server" required></asp:TextBox>
+                                <asp:TextBox type="password" class="form-control" ID="txtPassword" runat="server" required="true"></asp:TextBox>
                             </div>
                             <br />
                             <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" class="btn btn-primary btn-block" />

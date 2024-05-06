@@ -41,25 +41,26 @@ namespace Jaartaak.Persistance
             return List;
         }
         //hiermee voegt de organisatie een gebruiker toe //moet aangepast worden!!!
-        public void addUserToDB(string name, string pasWord)
+        public User addUserToDB(int orgID, string name, string pasWord)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO gebruiker (username, passwordUser) VALUES (@name, @pasWord)", conn);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO gebruiker (orgID, username, passwordUser) VALUES (@orgID, @name, @pasWord)", conn);
+            cmd.Parameters.AddWithValue("@orgID", orgID);
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@pasWord", pasWord);
+
             conn.Open();
-            try
+            MySqlDataReader reader = cmd.ExecuteReader();
+            User result = null;
+            while (reader.Read())
             {
-
-                cmd.ExecuteNonQuery();
+                result = new User(
+                    Convert.ToInt32(reader["userID"]),
+                    Convert.ToInt32(reader["orgID"]),
+                    Convert.ToString(reader["username"]),
+                    Convert.ToString(reader["passwordUser"]));
             }
-            catch (MySqlException ex)
-            {
-                conn.Close();
-
-            }
-
-            conn.Close();
+            return result;
 
         }
         //select * from bucketlistdatabase.persoon where naamPersoon = 'TestNaam' and paswoordPersoon = '1234';

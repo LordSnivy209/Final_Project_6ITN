@@ -11,6 +11,7 @@ namespace Jaartaak.Business
         private Persistance.persCon _persCon;
         private string _connectionstring;
         private User _loggedInUser;
+        private User _registeredUser;
         
         //properties
         public User LoggedInUser { get { return _loggedInUser; } }
@@ -29,17 +30,10 @@ namespace Jaartaak.Business
             return _loggedInUser != null;
         }//public bool Login(string username, string password)
 
-        public bool Register(string username, string password)
+        public bool Register(int orgID, string username, string password)
         {
-            if (_persCon.getUserFromDB(username, password) != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            _registeredUser = _persCon.addUserToDB(orgID, username, password);
+            return _registeredUser != null;
         }//public bool Register(string username, string password)
 
 

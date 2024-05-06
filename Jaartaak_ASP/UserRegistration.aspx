@@ -11,23 +11,19 @@
                     <div class="card-body">
                         <form runat="server">
                             <div class="form-group position-relative">
-                                <label for="fullName">Full Name</label>
+                                <asp:label runat="server" for="fullName">Username</asp:label>
                                 <input type="text" class="form-control" id="fullName" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" runat="server" />
+                                <asp:label runat="server" for="password">Password</asp:label>
+                                <input type="password" class="form-control" id="lblPassword" runat="server" required/>
                             </div>
                             <div class="form-group position-relative">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" runat="server" required/>
-                            </div>
-                            <div class="form-group position-relative">
-                                <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" runat="server" required/>
+                                <asp:label runat="server" for="confirmPassword">Confirm Password</asp:label>
+                                <input type="password" class="form-control" id="lblConfirmPassword" runat="server" required/>
                             </div>
                             <br />
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <asp:button runat="server" type="submit" class="btn btn-primary btn-block" id="btnRegister" OnClick="btnRegister_Click" Text="Register"></asp:button>
                         </form>
                     </div>
                 </div>

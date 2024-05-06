@@ -44,9 +44,10 @@ namespace Jaartaak.Business
             _password = password;
         }
 
-        public User(string name, string password)
+        public User(int orgID, string name, string password)
         {
             _userID = 0;
+            _orgID = orgID;
             _userName = name;
             _password = password;
         }
