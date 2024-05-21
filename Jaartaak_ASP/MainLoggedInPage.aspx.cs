@@ -38,30 +38,16 @@ namespace Jaartaak_ASP
         }
         private void fillControls()
         {
-            /*List<BucketListItemPersonal> list = _controller.getPersonalItems();
-            int teller = 0;
-            foreach (BucketListItemPersonal item in list)
+            List<Note> list = _controller.GetNotes();
+            foreach (Note item in list)
             {
-
-                if (item.IsDone)
-                {
                     //item in de lijst
-                    cbxPersonalList.Items.Add(item.ToString());
-                    //item aanvinken
-                    cbxPersonalList.Items[teller].Selected = true;
-                    //item disable
-                    cbxPersonalList.Items[teller].Enabled = false;
-                }
-                else
-                {
-                    //item in de lijst
-                    cbxPersonalList.Items.Add(item.ToString());
-                }
-                teller++;
-            }*/
+                    lbList.Items.Add(item.ToString());
+                
+            }
 
             lblUsername.Text = _controller.LoggedInUser.UserName;
-
+            
         }
     }
 }

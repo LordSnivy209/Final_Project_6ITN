@@ -23,7 +23,7 @@ namespace Jaartaak.Persistance
             //select notitie.noteID, gebruiker.username, notitie.title, notitie.content, notitie.creationDate from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID  = gebruiker.userID
             //select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID
             MySqlConnection conn = new MySqlConnection(_connectionstring);
-            MySqlCommand cmd = new MySqlCommand("select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID where userID = @userID", conn);
+            MySqlCommand cmd = new MySqlCommand("select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID where notitie.userID = @userID", conn);
             cmd.Parameters.AddWithValue("@userID", userID);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();

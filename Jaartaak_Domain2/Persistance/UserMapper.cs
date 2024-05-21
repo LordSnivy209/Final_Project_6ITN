@@ -86,5 +86,27 @@ namespace Jaartaak.Persistance
             conn.Close();
             return result;
         }
+        // paste getuser here make sure that there'll be a getUsername
+        public User getUserNameFromDB(string name)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("Select userID, orgId, username, passwordUser from databasenotities.gebruiker" +
+                " where username = @name and passwordUser = @pasWord", conn);
+            cmd.Parameters.AddWithValue("@name", name);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            User result = null;
+            while (reader.Read())
+            {
+                result = new User(
+                    Convert.ToInt32(reader["userID"]),
+                    Convert.ToInt32(reader["orgID"]),
+                    Convert.ToString(reader["username"]),
+                    Convert.ToString(reader["passwordUser"]));
+            }
+            conn.Close();
+            return result;
+        }
     }
+    
 }

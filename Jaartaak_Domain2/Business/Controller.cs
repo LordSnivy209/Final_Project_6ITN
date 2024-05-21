@@ -35,6 +35,17 @@ namespace Jaartaak.Business
             _registeredUser = _persCon.addUserToDB(orgID, username, password);
             return _registeredUser != null;
         }//public bool Register(string username, string password)
+        public List<Note> GetNotes()
+        {
+            if (_loggedInUser == null)
+            {
+                return null;
+            }
+            else
+            {
+                return _persCon.getNotesFromDB(_loggedInUser.UserID);
+            }
+        }
 
 
     }//public class busCon

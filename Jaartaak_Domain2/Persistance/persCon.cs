@@ -38,6 +38,11 @@ namespace Jaartaak.Persistance
             UserMapper mapper = new UserMapper(_connectionstring);
             return mapper.getUserFromDB(name, pasWord);
         }
+        public User getUsernameFromDB(string username, string pasWord)
+        {
+            UserMapper mapper = new UserMapper(_connectionstring);
+            return mapper.getUserFromDB(username, pasWord);
+        }
         public User addUserToDB(int orgID, string name, string pasWord)
         {
             UserMapper mapper = new UserMapper(_connectionstring);
