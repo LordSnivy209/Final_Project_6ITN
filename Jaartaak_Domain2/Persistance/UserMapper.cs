@@ -91,7 +91,7 @@ namespace Jaartaak.Persistance
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
             MySqlCommand cmd = new MySqlCommand("Select userID, orgId, username, passwordUser from databasenotities.gebruiker" +
-                " where username = @name and passwordUser = @pasWord", conn);
+                " where username = @name", conn);
             cmd.Parameters.AddWithValue("@name", name);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();

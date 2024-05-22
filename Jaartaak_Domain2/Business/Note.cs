@@ -63,9 +63,9 @@ namespace Jaartaak.Business
             _createdDate = createdDate;
         }
         //methods
-       public override string ToString()
+        public override string ToString()
         {
-            return _titleNote + ": " + _noteContents;
+            return $"{TitleNote}: {NoteContents}";
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Jaartaak.Business;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,15 +41,39 @@ namespace Jaartaak_ASP
         private void fillControls()
         {
             List<Note> list = _controller.GetNotes();
-            foreach (Note item in list)
-            {
-                    //item in de lijst
-                    lbList.Items.Add(item.ToString());
-                
-            }
+            rptNotes.DataSource = list;
+            rptNotes.DataBind();
 
             lblUsername.Text = _controller.LoggedInUser.UserName;
+        }
+
+
+        protected void saveNoteBtn_Click1(object sender, EventArgs e)
+        {
             
+            string title = noteTitle.Text.Trim();
+            string content = noteContent.Text.Trim();
+            DateTime dateTime = DateTime.Now;
+            int userId = _controller.LoggedInUser.UserID;
+
+            if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(content))
+            {
+                //item in DB
+                _controller.addNoteToDB(userId, title, content, dateTime);
+
+                //clear input
+                noteTitle.Text = "";
+                noteContent.Text = "";
+
+                //Hide the modal
+                ScriptManager.RegisterStartupScript(this, GetType(), "HideModal", "hideModal();", true);
+            }
+            else
+            {
+                // Handle validation errors
+                // e.g., display an error message
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowModal", "showModal();", true);
+            }
         }
     }
 }

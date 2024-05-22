@@ -33,12 +33,48 @@ namespace Jaartaak_ASP
         protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
-        /// lbList control.
+        /// btnAddNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbList;
+        protected global::System.Web.UI.WebControls.Button btnAddNote;
+
+        /// <summary>
+        /// rptNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptNotes;
+
+        /// <summary>
+        /// noteTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox noteTitle;
+
+        /// <summary>
+        /// noteContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox noteContent;
+
+        /// <summary>
+        /// saveNoteBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveNoteBtn;
     }
 }

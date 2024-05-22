@@ -48,7 +48,11 @@ namespace Jaartaak.Persistance
             UserMapper mapper = new UserMapper(_connectionstring);
             return mapper.addUserToDB(orgID, name, pasWord);
         }
-
+        public User getUserNameFromDB(string username)
+        {
+            UserMapper mapper = new UserMapper(_connectionstring);
+            return mapper.getUserNameFromDB(username);
+        }
 
         //noteMapper
         public List<Note> getNotesFromDB(int userID)
@@ -57,7 +61,7 @@ namespace Jaartaak.Persistance
             return mapper.getNotesFromDB(userID);
         }
 
-        public Note addItemToDB(string userID, string title, string content, DateTime creationDate)
+        public Note addItemToDB(int userID, string title, string content, DateTime creationDate)
         {
             NoteMapper mapper = new NoteMapper(_connectionstring);
             return mapper.addItemToDB(userID, title, content, creationDate);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Jaartaak.Business
 {
@@ -44,6 +45,23 @@ namespace Jaartaak.Business
             else
             {
                 return _persCon.getNotesFromDB(_loggedInUser.UserID);
+            }
+        }
+        public User getUserNameFromDB(string username)
+        {
+            return _persCon.getUserNameFromDB(username);
+        }
+
+
+        public bool addNoteToDB(int userID, string title, string content, DateTime creationDate)
+        {
+            if (_persCon.addItemToDB(userID, title, content, creationDate) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 

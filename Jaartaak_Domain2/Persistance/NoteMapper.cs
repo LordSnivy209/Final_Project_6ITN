@@ -45,7 +45,7 @@ namespace Jaartaak.Persistance
         }
 
         //might have to swap string userID to an int - not sure
-        public Note addItemToDB(string userID, string title, string content, DateTime creationDate)
+        public Note addItemToDB(int userID, string title, string content, DateTime creationDate)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
             MySqlCommand cmd = new MySqlCommand("INSERT INTO databasenotities.notitie (userID, title, content, creationDate) VALUES (@userID, @title, @content, @creationDate)", conn);
@@ -57,10 +57,10 @@ namespace Jaartaak.Persistance
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-
+                string userIDString = Convert.ToString(userID);
                 // After successfully adding the item to the database, return the corresponding Note object
                 int lastInsertedId = (int)cmd.LastInsertedId;
-                Note newItem = new Note(lastInsertedId, userID, title, content, creationDate);
+                Note newItem = new Note(lastInsertedId, userIDString, title, content, creationDate);
                 return newItem;
             }
             catch (MySqlException ex)
