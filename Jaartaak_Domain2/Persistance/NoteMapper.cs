@@ -76,5 +76,30 @@ namespace Jaartaak.Persistance
                 conn.Close();
             }
         }
+        public List<SearchNotes> SearchNotes(int userID, string title)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID where notitie.userID = @userID and notitie.title = @title", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@title", title);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> List = new List<Note>();
+            while (reader.Read())
+            {
+                Note note = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["username"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+
+                List.Add(note);
+
+            }
+            conn.Close();
+            return List;
+
+        }
     }
 }

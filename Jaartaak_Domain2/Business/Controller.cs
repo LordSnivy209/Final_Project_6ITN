@@ -65,6 +65,18 @@ namespace Jaartaak.Business
             }
         }
 
+        public List<SearchNotes> searchNotes(string title)
+        {
+            if (_loggedInUser == null)
+            {
+                return null;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
     }//public class busCon
 }

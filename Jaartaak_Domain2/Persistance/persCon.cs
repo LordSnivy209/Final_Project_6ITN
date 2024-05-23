@@ -66,5 +66,11 @@ namespace Jaartaak.Persistance
             NoteMapper mapper = new NoteMapper(_connectionstring);
             return mapper.addItemToDB(userID, title, content, creationDate);
         }
+
+        public List<SearchNotes> searchNotesFromDB(int userID, string title) 
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.SearchNotes(userID, title);
+        }
     }
 }

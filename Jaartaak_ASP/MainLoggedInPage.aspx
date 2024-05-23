@@ -20,7 +20,7 @@
         </section>
         <hr />
         <section class="container">
-            <input type="text" class="form-control" placeholder="Search Notes...">
+            <input  id ="searchNotesID" type="text" class="form-control" placeholder="Search Notes..." onchange="searchNotes">
         </section>
         <section class="container">
             <h2>Recent Notes</h2>
