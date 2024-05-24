@@ -68,14 +68,12 @@ namespace Jaartaak_ASP
 
                 //Hide the modal
                 ScriptManager.RegisterStartupScript(this, GetType(), "HideModal", "hideModal();", true);
-                //reload page
+                //reload notes
                 fillControls();
             }
             else
             {
                 // Handle validation errors
-                // e.g., display an error message
-                ScriptManager.RegisterStartupScript(this, GetType(), "ShowModal", "showModal();", true);
             }
         }
         protected void searchNotes(object sender, EventArgs e)
@@ -89,8 +87,6 @@ namespace Jaartaak_ASP
 
         protected void EditNote_Click(object sender, EventArgs e)
         {
-            // Handle the edit functionality here
-            // Get the NoteID from CommandArgument
             var btn = (Button)sender;
             int noteID = int.Parse(btn.CommandArgument);
 
@@ -99,25 +95,55 @@ namespace Jaartaak_ASP
             txteditNoteTitle.Text = note.TitleNote;
             txteditNoteContent.Text = note.NoteContents;
 
+            // Store the noteID in a session variable
+            Session["EditingNoteID"] = noteID;
+
             // Show the modal
             ScriptManager.RegisterStartupScript(this, GetType(), "showEditModal", "showEditModal();", true);
         }
-
-        protected void DeleteNote_Click(object sender, EventArgs e)
-        {
-            //// Handle the delete functionality here
-            //var btn = (Button)sender;
-            //int noteID = int.Parse(btn.CommandArgument);
-
-            //// Delete the note from the database
-            //_controller.DeleteNoteById(noteID);
-
-            //// Refresh the notes list
-            //FillControls();
-        }
         protected void SaveChanges_Click(object sender, EventArgs e)
         {
+            //retrieve the noteID from the session variable
+            int noteID = (int)Session["EditingNoteID"];
+            //get new title and content
+            string newTitle = txteditNoteTitle.Text;
+            string newContent = txteditNoteContent.Text;
 
+
+            _controller.editNoteInDB(noteID, newTitle, newContent);
+
+            //hide modal
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideEditModal", "hideEditModal();", true);
+            //reload notes
+            fillControls();
+        }
+
+        protected void btnDeleteNoteNO_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideDeleteConfirmationModal", "hideDeleteConfirmationModal();", true);
+        }
+
+        protected void btnDeleteNoteYES_Click(object sender, EventArgs e)
+        {
+            //retrieve the noteID from the session variable
+            int noteID = (int)Session["DeleteNoteID"];
+
+            _controller.deleteNoteFromDB(noteID);
+
+            //reload notes
+            fillControls();
+        }
+
+        protected void btnDeleteNote_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            int noteID = int.Parse(btn.CommandArgument);
+
+            // Store the noteID in a session variable
+            Session["DeleteNoteID"] = noteID;
+
+            //confirm deletion
+            ScriptManager.RegisterStartupScript(this, GetType(), "showDeleteConfirmationModal", "showDeleteConfirmationModal();", true);
         }
     }
 }

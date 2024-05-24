@@ -80,18 +80,32 @@ namespace Jaartaak.Business
             try
             {
                 _persCon.editNoteInDB(noteID, newTitle, newContent);
-                // If the method above doesn't throw an exception, assume editing was successful
+                
                 return true;
             }
             catch (Exception ex)
             {
-                return false; // Return false indicating editing failed
+                return false; 
             }
         }
 
         public Note GetNoteById(int noteID)
         {
             return _persCon.GetNoteById(noteID);
+        }
+
+        public bool deleteNoteFromDB(int noteID)
+        {
+            try
+            {
+                _persCon.deleteNoteFromDB(noteID);
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false; 
+            }
         }
 
 

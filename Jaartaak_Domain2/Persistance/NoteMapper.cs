@@ -117,7 +117,6 @@ namespace Jaartaak.Persistance
             }
             catch (Exception ex)
             {
-                // Handle the exception (e.g., log it)
                 throw new ApplicationException("An error occurred while updating the note.", ex);
             }
         }
@@ -144,6 +143,23 @@ namespace Jaartaak.Persistance
             );
             conn.Close();
             return note;  
+        }
+
+        //DELETE FROM databasenotities.notitie WHERE (noteID = @noteID);
+        public void deleteNoteFromDB(int noteID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM databasenotities.notitie WHERE (noteID = @noteID)", conn);
+            cmd.Parameters.AddWithValue("@noteID", noteID);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while updating the note.", ex);
+            }
         }
     }
 }

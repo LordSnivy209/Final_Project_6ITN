@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button ID="btnEditNote" CssClass="btn btn-secondary" runat="server" Text="Edit" CommandArgument='<%# Eval("NoteID") %>' OnClick="EditNote_Click" />
-                                    <asp:Button ID="btnDeleteNote" CssClass="btn btn-danger" runat="server" Text="Delete" CommandArgument='<%# Eval("NoteID") %>' OnClick="DeleteNote_Click" />
+                                    <asp:Button ID="btnDeleteNote" CssClass="btn btn-danger" runat="server" Text="Delete" CommandArgument='<%# Eval("NoteID") %>' onclick="btnDeleteNote_Click" />
                                 </div>
                             </div>
                         </div>
@@ -121,6 +121,25 @@
     </div>
 </div>
 
+        <!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this note? (We will not be able to recover it)</p>
+            </div>
+            <div class="modal-footer">
+                <asp:button type="button" id="btnDeleteNoteNO" Cssclass="btn btn-secondary" runat="server" data-bs-dismiss="modal" OnClick="btnDeleteNoteNO_Click" Text="No"></asp:button>
+                <asp:button type="button" id="btnDeleteNoteYES" Cssclass="btn btn-danger" runat="server" data-bs-dismiss="modal" OnClick="btnDeleteNoteYES_Click" Text="Yes"></asp:button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -136,12 +155,28 @@
             var modal = bootstrap.Modal.getInstance(myModalEl);
             modal.hide();
         }
+        function hideEditModal() {
+            var myModalEl = document.getElementById("editNoteModal<%# Eval("NoteID") %>");
+            var modal = bootstrap.Modal.getInstance(myModalEl);
+            modal.hide();
+        }
         function showEditModal() { 
             var myModal = new bootstrap.Modal(document.getElementById("editNoteModal<%# Eval("NoteID") %>"), {
                 keyboard: false
             });
             myModal.show();
         }
+        function showDeleteConfirmationModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+        function hideDeleteConfirmationModal() {
+            var myModalEl = document.getElementById('deleteConfirmationModal');
+             var modal = bootstrap.Modal.getInstance(myModalEl);
+             modal.hide();
+         }
     </script>
     </form>
 </asp:Content>

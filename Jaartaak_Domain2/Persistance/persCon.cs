@@ -85,5 +85,11 @@ namespace Jaartaak.Persistance
             return mapper.GetNoteById(noteID);
         }
 
+        public void deleteNoteFromDB(int noteID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            mapper.deleteNoteFromDB(noteID);
+        }
+
     }
 }
