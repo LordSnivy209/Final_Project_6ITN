@@ -44,7 +44,7 @@ namespace Jaartaak.Persistance
             return List;
         }
 
-        //might have to swap string userID to an int - not sure
+        
         public Note addItemToDB(int userID, string title, string content, DateTime creationDate)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
@@ -100,6 +100,50 @@ namespace Jaartaak.Persistance
             conn.Close();
             return List;
 
+        }
+
+        //UPDATE databasenotities.notitie SET title = @newTitle, content = @newContent WHERE (`noteID` = @noteID);
+        public void editNoteInDB(int noteID, string newTitle, string newContent)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("UPDATE databasenotities.notitie SET title = @newTitle, content = @newContent WHERE (`noteID` = @noteID)", conn);
+            cmd.Parameters.AddWithValue("@noteID", noteID);
+            cmd.Parameters.AddWithValue("@newTitle", newTitle);
+            cmd.Parameters.AddWithValue("@newContent", newContent);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it)
+                throw new ApplicationException("An error occurred while updating the note.", ex);
+            }
+        }
+
+        public Note GetNoteById(int noteID)
+        {
+            
+            string query = "SELECT * FROM databasenotities.notitie WHERE noteID = @noteID";
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@noteID", noteID);
+            
+            
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+            // After successfully adding the item to the database, return the corresponding Note object
+            reader.Read();
+            Note note = new Note(
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"])
+            );
+            conn.Close();
+            return note;  
         }
     }
 }

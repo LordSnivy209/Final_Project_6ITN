@@ -72,5 +72,18 @@ namespace Jaartaak.Persistance
             NoteMapper mapper = new NoteMapper(_connectionstring);
             return mapper.SearchNotes(userID, title);
         }
+
+        public void editNoteInDB(int noteID, string newTitle, string newContent)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            mapper.editNoteInDB(noteID, newTitle, newContent);
+        }
+
+        public Note GetNoteById(int noteID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.GetNoteById(noteID);
+        }
+
     }
 }

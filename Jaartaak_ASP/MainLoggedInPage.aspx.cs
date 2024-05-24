@@ -86,5 +86,38 @@ namespace Jaartaak_ASP
             rptNotes.DataSource = list;
             rptNotes.DataBind();
         }
+
+        protected void EditNote_Click(object sender, EventArgs e)
+        {
+            // Handle the edit functionality here
+            // Get the NoteID from CommandArgument
+            var btn = (Button)sender;
+            int noteID = int.Parse(btn.CommandArgument);
+
+            // Fetch the note details from the database and populate the modal fields
+            Note note = _controller.GetNoteById(noteID);
+            txteditNoteTitle.Text = note.TitleNote;
+            txteditNoteContent.Text = note.NoteContents;
+
+            // Show the modal
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEditModal", "showEditModal();", true);
+        }
+
+        protected void DeleteNote_Click(object sender, EventArgs e)
+        {
+            //// Handle the delete functionality here
+            //var btn = (Button)sender;
+            //int noteID = int.Parse(btn.CommandArgument);
+
+            //// Delete the note from the database
+            //_controller.DeleteNoteById(noteID);
+
+            //// Refresh the notes list
+            //FillControls();
+        }
+        protected void SaveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

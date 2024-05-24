@@ -13,9 +13,12 @@ namespace Jaartaak.Business
         private string _connectionstring;
         private User _loggedInUser;
         private User _registeredUser;
+     
+
         
         //properties
         public User LoggedInUser { get { return _loggedInUser; } }
+       
 
         public Controller()
         {
@@ -70,6 +73,25 @@ namespace Jaartaak.Business
 
                 return _persCon.searchNotesFromDB(userID, title);
             
+        }
+
+        public bool editNoteInDB(int noteID, string newTitle, string newContent)
+        {
+            try
+            {
+                _persCon.editNoteInDB(noteID, newTitle, newContent);
+                // If the method above doesn't throw an exception, assume editing was successful
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false; // Return false indicating editing failed
+            }
+        }
+
+        public Note GetNoteById(int noteID)
+        {
+            return _persCon.GetNoteById(noteID);
         }
 
 

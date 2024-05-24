@@ -20,7 +20,7 @@
         </section>
         <hr />
         <section class="container">
-            <asp:Textbox runat="server" id ="txtSearchNotes" type="text" class="form-control" placeholder="Search Notes..."/>
+            <asp:TextBox runat="server" ID="txtSearchNotes" type="text" class="form-control" placeholder="Search Notes..."/>
             <asp:Button ID="btnSearchNotes" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="searchNotes"/>
         </section>
         <section class="container">
@@ -32,6 +32,28 @@
                         <div class="card-body">
                             <h5 class="card-title"><%# Eval("TitleNote") %></h5>
                             <p class="card-text"><%# Eval("NoteContents") %></p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noteModal<%# Eval("NoteID") %>">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Note Modal for editing/deleting -->
+                    <div class="modal fade" id="noteModal<%# Eval("NoteID") %>" tabindex="-1" aria-labelledby="noteModalLabel<%# Eval("NoteID") %>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="noteModalLabel<%# Eval("NoteID") %>"><%# Eval("TitleNote") %></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><%# Eval("NoteContents") %></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="btnEditNote" CssClass="btn btn-secondary" runat="server" Text="Edit" CommandArgument='<%# Eval("NoteID") %>' OnClick="EditNote_Click" />
+                                    <asp:Button ID="btnDeleteNote" CssClass="btn btn-danger" runat="server" Text="Delete" CommandArgument='<%# Eval("NoteID") %>' OnClick="DeleteNote_Click" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </ItemTemplate>
@@ -67,12 +89,37 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <asp:Button ID="saveNoteBtn" CssClass="btn btn-primary" runat="server" Text="Save Note" OnClick="saveNoteBtn_Click1"/>
                 </div>
             </div>
         </div>
     </div>
+
+        <!-- Edit Note Modal -->
+<div class="modal fade" id="editNoteModal<%# Eval("NoteID") %>" tabindex="-1" aria-labelledby="editNoteModalLabel<%# Eval("NoteID") %>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNoteModalLabel<%# Eval("NoteID") %>">Edit Note</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="editNoteTitle" class="form-label">Title</label>
+                    <asp:TextBox ID="txteditNoteTitle" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="mb-3">
+                    <label for="editNoteContent" class="form-label">Note</label>
+                    <asp:TextBox ID="txteditNoteContent" CssClass="form-control" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <asp:Button ID="btnSaveChanges" CssClass="btn btn-primary" runat="server" Text="Save Changes" CommandArgument='<%# Eval("NoteID") %>' OnClick="SaveChanges_Click" />
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -88,6 +135,12 @@
             var myModalEl = document.getElementById('addNoteModal');
             var modal = bootstrap.Modal.getInstance(myModalEl);
             modal.hide();
+        }
+        function showEditModal() { 
+            var myModal = new bootstrap.Modal(document.getElementById("editNoteModal<%# Eval("NoteID") %>"), {
+                keyboard: false
+            });
+            myModal.show();
         }
     </script>
     </form>

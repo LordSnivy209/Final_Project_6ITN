@@ -10,17 +10,17 @@ namespace Jaartaak.Business
     public class Note
     {
         //fields
-        protected int _idNote;
+        protected int _noteID;
         protected string _userID;
         protected string _titleNote;
         protected string _noteContents;
         protected DateTime _createdDate;
 
         //properties
-        public int IdNote
+        public int NoteID
         {
-            get { return _idNote; }
-            set { _idNote = value; }
+            get { return _noteID; }
+            set { _noteID = value; }
         }
         public string UserID
         {
@@ -47,7 +47,7 @@ namespace Jaartaak.Business
         //constructor
         public Note(int noteID, string userID, string name, string description, DateTime createdDate)
         {
-            _idNote = noteID;
+            _noteID = noteID;
             _userID = userID;
             _titleNote = name;
             _noteContents = description;
@@ -56,7 +56,7 @@ namespace Jaartaak.Business
 
         public Note(string userID, string name, string description, DateTime createdDate)
         {
-            _idNote = 0;
+            _noteID = 0;
             _userID = userID;
             _titleNote = name;
             _noteContents = description;
