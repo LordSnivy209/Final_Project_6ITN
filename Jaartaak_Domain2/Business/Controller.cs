@@ -65,16 +65,11 @@ namespace Jaartaak.Business
             }
         }
 
-        public List<SearchNotes> searchNotes(string title)
+        public List<Note> searchNotes(int userID, string title)
         {
-            if (_loggedInUser == null)
-            {
-                return null;
-            }
-            else
-            {
-                return true;
-            }
+
+                return _persCon.searchNotesFromDB(userID, title);
+            
         }
 
 

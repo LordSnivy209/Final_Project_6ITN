@@ -80,8 +80,11 @@ namespace Jaartaak_ASP
         }
         protected void searchNotes(object sender, EventArgs e)
         {
-            string title =
-            _controller.searchNotes(searchNotesID);
+            string title = txtSearchNotes.Text.Trim();
+            int userID = _controller.LoggedInUser.UserID;
+            List<Note> list = _controller.searchNotes(userID, title);
+            rptNotes.DataSource = list;
+            rptNotes.DataBind();
         }
     }
 }

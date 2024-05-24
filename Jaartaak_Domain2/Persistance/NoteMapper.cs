@@ -76,12 +76,12 @@ namespace Jaartaak.Persistance
                 conn.Close();
             }
         }
-        public List<SearchNotes> SearchNotes(int userID, string title)
+        public List<Note> SearchNotes(int userID, string title)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
-            MySqlCommand cmd = new MySqlCommand("select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID where notitie.userID = @userID and notitie.title = @title", conn);
+            MySqlCommand cmd = new MySqlCommand("select notitie.*, gebruiker.username from databasenotities.notitie inner join databasenotities.gebruiker on notitie.userID = gebruiker.userID where notitie.userID = @userID and notitie.title LIKE @title", conn);
             cmd.Parameters.AddWithValue("@userID", userID);
-            cmd.Parameters.AddWithValue("@title", title);
+            cmd.Parameters.AddWithValue("@title","%" + title + "%");
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             List<Note> List = new List<Note>();

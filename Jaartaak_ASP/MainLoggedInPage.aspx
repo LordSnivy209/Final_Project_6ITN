@@ -20,7 +20,8 @@
         </section>
         <hr />
         <section class="container">
-            <input  id ="searchNotesID" type="text" class="form-control" placeholder="Search Notes..." onchange="searchNotes">
+            <asp:Textbox runat="server" id ="txtSearchNotes" type="text" class="form-control" placeholder="Search Notes..."/>
+            <asp:Button ID="btnSearchNotes" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="searchNotes"/>
         </section>
         <section class="container">
             <h2>Recent Notes</h2>
