@@ -1,11 +1,13 @@
 ﻿using Jaartaak.Business;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -144,6 +146,39 @@ namespace Jaartaak_ASP
 
             //confirm deletion
             ScriptManager.RegisterStartupScript(this, GetType(), "showDeleteConfirmationModal", "showDeleteConfirmationModal();", true);
+        }
+
+        protected void ddlSortNotes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sortOrder = ddlSortNotes.SelectedValue;
+            int userID = _controller.LoggedInUser.UserID;
+            switch (sortOrder)
+            {
+                case "creationDateAsc":
+                    _controller.orderByTitleAsc(userID);
+                    List<Note> list = _controller.orderByTitleAsc(userID);
+                    rptNotes.DataSource = list;
+                    rptNotes.DataBind();
+                    break;
+                case "creationDateDesc":
+                    List<Note> list2 = _controller.orderNotesByCDDesc(userID);
+                    rptNotes.DataSource = list2;
+                    rptNotes.DataBind();
+                    break;
+                case "alphabeticallyAsc":
+                    
+                    List<Note> list3 = _controller.orderByTitleAsc(userID);
+                    rptNotes.DataSource = list3;
+                    rptNotes.DataBind();
+                    break;
+                    
+                case "alphabeticallyDesc":
+                    
+                    List<Note> list4 = _controller.orderByTitleDesc(userID);
+                    rptNotes.DataSource = list4;
+                    rptNotes.DataBind();
+                    break;
+            }
         }
     }
 }

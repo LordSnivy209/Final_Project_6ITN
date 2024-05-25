@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jaartaak.Persistance;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -106,6 +107,26 @@ namespace Jaartaak.Business
             {
                 return false; 
             }
+        }
+
+        public List<Note> orderNotesByCDDesc(int userID)
+        {
+            return _persCon.orderByCDDesc(userID);
+        }
+
+        public List<Note> orderNotesByCDAsc(int userID)
+        {
+            return _persCon.orderByCDAsc(userID);
+        }
+
+        public List<Note> orderByTitleAsc(int userID)
+        {
+            return _persCon.orderByTitleAsc(userID);
+        }
+
+        public List<Note> orderByTitleDesc(int userID)
+        {
+            return _persCon.orderByTitleDesc(userID);
         }
 
 

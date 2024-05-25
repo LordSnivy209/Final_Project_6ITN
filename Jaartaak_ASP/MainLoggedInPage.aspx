@@ -23,8 +23,17 @@
             <asp:TextBox runat="server" ID="txtSearchNotes" type="text" class="form-control" placeholder="Search Notes..."/>
             <asp:Button ID="btnSearchNotes" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="searchNotes"/>
         </section>
+         <section class="container">
+                <h2>Sort Notes</h2>
+                <asp:DropDownList ID="ddlSortNotes" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSortNotes_SelectedIndexChanged">
+                    <asp:ListItem Text="Old to New" Value="creationDateAsc" />
+                    <asp:ListItem Text="New to Old" Value="creationDateDesc" />
+                    <asp:ListItem Text="a-z" Value="alphabeticallyAsc" />
+                    <asp:ListItem Text="z-a" Value="alphabeticallyDesc" />
+                </asp:DropDownList>
+            </section>
         <section class="container">
-            <h2>Recent Notes</h2>
+            <h2>Your Notes</h2>
             <!-- Display recent notes here -->
             <asp:Repeater ID="rptNotes" runat="server">
                 <ItemTemplate>

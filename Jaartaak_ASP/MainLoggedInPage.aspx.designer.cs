@@ -60,6 +60,15 @@ namespace Jaartaak_ASP
         protected global::System.Web.UI.WebControls.Button btnSearchNotes;
 
         /// <summary>
+        /// ddlSortNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortNotes;
+
+        /// <summary>
         /// rptNotes control.
         /// </summary>
         /// <remarks>

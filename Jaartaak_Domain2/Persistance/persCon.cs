@@ -90,6 +90,27 @@ namespace Jaartaak.Persistance
             NoteMapper mapper = new NoteMapper(_connectionstring);
             mapper.deleteNoteFromDB(noteID);
         }
+        public List<Note> orderByCDDesc(int userID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.orderNotesByCreationDateDesc(userID);
+        }
+        public List<Note> orderByCDAsc(int userID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.orderNotesByCreationDateAsc(userID);
+        }
 
+        public List<Note> orderByTitleAsc(int userID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.OrderNotesAlphabeticallyAsc(userID);
+        }
+
+        public List<Note> orderByTitleDesc(int userID)
+        {
+            NoteMapper mapper = new NoteMapper(_connectionstring);
+            return mapper.OrderNotesAlphabeticallyDesc(userID);
+        }
     }
 }

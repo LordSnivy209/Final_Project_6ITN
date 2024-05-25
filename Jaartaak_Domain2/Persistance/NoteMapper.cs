@@ -1,5 +1,6 @@
 ﻿using Jaartaak.Business;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,6 +161,105 @@ namespace Jaartaak.Persistance
             {
                 throw new ApplicationException("An error occurred while updating the note.", ex);
             }
+        }
+
+        //SELECT * FROM databasenotities.notitie WHERE userID = @userID
+        //ORDER BY creationDate DESC;
+
+        public List<Note> orderNotesByCreationDateDesc(int userID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM databasenotities.notitie WHERE userID = @userID ORDER BY creationDate DESC", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> List = new List<Note>();
+            while (reader.Read())
+            {
+                Note note = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+
+                List.Add(note);
+
+            }
+            conn.Close();
+            return List;
+        }
+
+        public List<Note> orderNotesByCreationDateAsc(int userID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM databasenotities.notitie WHERE userID = @userID ORDER BY creationDate ASC", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> List = new List<Note>();
+            while (reader.Read())
+            {
+                Note note = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+
+                List.Add(note);
+
+            }
+            conn.Close();
+            return List;
+        }
+
+        public List<Note> OrderNotesAlphabeticallyAsc(int userID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM databasenotities.notitie WHERE userID = @userID ORDER BY title ASC", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> List = new List<Note>();
+            while (reader.Read())
+            {
+                Note note = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+
+                List.Add(note);
+
+            }
+            conn.Close();
+            return List;
+        }
+
+        public List<Note> OrderNotesAlphabeticallyDesc(int userID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM databasenotities.notitie WHERE userID = @userID ORDER BY title DESC", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> List = new List<Note>();
+            while (reader.Read())
+            {
+                Note note = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+
+                List.Add(note);
+
+            }
+            conn.Close();
+            return List;
         }
     }
 }
