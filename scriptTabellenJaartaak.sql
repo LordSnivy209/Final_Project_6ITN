@@ -34,6 +34,11 @@ select organisation.*, gebruiker.username, gebruiker.passwordUser, notitie.noteI
 inner join databasenotities.organisation on gebruiker.orgID = organisation.orgID
 inner join databasenotities.notitie on gebruiker.userID = notitie.userID;
 
+ALTER TABLE `databasenotities`.`gebruiker` 
+ADD UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE;
+;
+
+
 
 -- INSERT INTO `databasenotities`.`gebruiker` (`orgID`, `username`, `passwordUser`) VALUES ('2', 'Luka', '1234');
 
