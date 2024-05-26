@@ -14,9 +14,7 @@
             <p>Start organizing your notes.</p>
         </section>
         <section class="container d-flex">
-            <button type="button" class="btn btn-primary me-2">Personal Notes</button>
-            <button type="button" class="btn btn-primary me-2">Business Notes</button>
-            <asp:Button ID="btnAddNote" CssClass="btn btn-success ms-auto" runat="server" Text="Add note" OnClientClick="showModal(); return false;" />
+            <asp:Button ID="btnAddNote" CssClass="btn btn-success" runat="server" Text="Add note" OnClientClick="showModal(); return false;" />
         </section>
         <hr />
         <section class="container">

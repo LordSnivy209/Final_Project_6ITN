@@ -1,17 +1,50 @@
-﻿using System;
+﻿using Jaartaak.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Jaartaak_ASP
 {
     public partial class BusinessLogin : System.Web.UI.Page
     {
+        Controller _controller;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
+                _controller = (Controller)HttpContext.Current.Session["_controller"];
+            }
+            else
+            {
+                if (HttpContext.Current.Session["_controller"] == null)
+                {
+                    _controller = new Controller();
+                    HttpContext.Current.Session["_controller"] = _controller;
+                }
+                else
+                {
+                    _controller = (Controller)HttpContext.Current.Session["_controller"];
+                }
+            }
+        }
 
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtBusiness.Text;
+            string password = txtPassword.Text;
+            if (_controller.LoginAsBusiness(username, password))
+            {
+                txtBusiness.Focus();
+                Response.Write("<script>alert('Error: Business not found. Have you applied?')</script>");
+            }
+            else
+            {
+                Response.Redirect("MainBusinessPage.aspx");
+            }
         }
     }
 }

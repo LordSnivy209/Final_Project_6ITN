@@ -39,5 +39,49 @@ namespace Jaartaak.Persistance
             return organisations;
         }
 
+        public Organisation getOrgFromDB(string name, string pasWord)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("Select * from databasenotities.organisation" +
+                " where orgName = @name and orgPassword = @pasWord", conn);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@pasWord", pasWord);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Organisation result = null;
+            while (reader.Read())
+            {
+                result = new Organisation(
+                    Convert.ToInt32(reader["orgID"]),
+                    Convert.ToString(reader["orgName"]),
+                    Convert.ToString(reader["orgPassword"]));
+            }
+            conn.Close();
+            return result;
+        }
+
+        public List<Note> getOrgNotesFromDB(int orgID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM gebruiker AS u INNER JOIN notitie AS n ON u.userID = n.userID INNER JOIN organisation AS o ON u.orgID = o.orgID WHERE u.orgID = @orgID", conn);
+            cmd.Parameters.AddWithValue("@orgID", orgID);
+            
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Note> notes = new List<Note>();
+            while (reader.Read())
+            {
+                Note result = new Note(
+                    Convert.ToInt32(reader["noteID"]),
+                    Convert.ToString(reader["userID"]),
+                    Convert.ToString(reader["title"]),
+                    Convert.ToString(reader["content"]),
+                    Convert.ToDateTime(reader["creationDate"]));
+                notes.Add(result);
+            }
+            conn.Close();
+            return notes;
+        }
+
     }
 }

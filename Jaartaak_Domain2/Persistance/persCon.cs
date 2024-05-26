@@ -28,10 +28,10 @@ namespace Jaartaak.Persistance
         }
         //userMapper
 
-        public List<User> getUsersFromDB()
+        public List<User> getUsersFromDB(int orgID)
         {
             UserMapper mapper = new UserMapper(_connectionstring);
-            return mapper.getUsersFromDB();
+            return mapper.getUsersFromDB(orgID);
         }
         public User getUserFromDB(string name, string pasWord)
         {
@@ -53,6 +53,13 @@ namespace Jaartaak.Persistance
             UserMapper mapper = new UserMapper(_connectionstring);
             return mapper.getUserNameFromDB(username);
         }
+        public void AddUserToOrg(int orgID, int userID)
+        {
+            UserMapper mapper = new UserMapper(_connectionstring);
+            mapper.AddUserToOrg(orgID, userID);
+        }
+
+
 
         //noteMapper
         public List<Note> getNotesFromDB(int userID)
@@ -112,5 +119,20 @@ namespace Jaartaak.Persistance
             NoteMapper mapper = new NoteMapper(_connectionstring);
             return mapper.OrderNotesAlphabeticallyDesc(userID);
         }
+
+
+        //ORGANISATIONS
+        public Organisation getOrgFromDB(string name, string pasWord)
+        {
+            OrgMapper mapper = new OrgMapper(_connectionstring);
+            return mapper.getOrgFromDB(name, pasWord);
+        }
+
+        public List<Note> getOrgNotes(int orgID) 
+        {
+            OrgMapper mapper = new OrgMapper(_connectionstring);
+            return mapper.getOrgNotesFromDB(orgID);
+        }
+
     }
 }

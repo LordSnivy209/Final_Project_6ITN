@@ -24,6 +24,24 @@ namespace Jaartaak_ASP
         protected global::System.Web.UI.HtmlControls.HtmlInputText businessName;
 
         /// <summary>
+        /// contactName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactName;
+
+        /// <summary>
+        /// contactNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactNumber;
+
+        /// <summary>
         /// email control.
         /// </summary>
         /// <remarks>
@@ -49,5 +67,14 @@ namespace Jaartaak_ASP
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword confirmPassword;
+
+        /// <summary>
+        /// businessDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea businessDetails;
     }
 }

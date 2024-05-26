@@ -20,10 +20,11 @@ namespace Jaartaak.Persistance
             _connectionstring = connectionstring;
         }
 
-        public List<User> getUsersFromDB()
+        public List<User> getUsersFromDB(int orgID)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM gebruiker", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM gebruiker WHERE orgID != @orgID", conn);
+            cmd.Parameters.AddWithValue("@orgID", orgID);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             List<User> List = new List<User>();
@@ -109,7 +110,6 @@ namespace Jaartaak.Persistance
             conn.Close();
             return result;
         }
-        // paste getuser here make sure that there'll be a getUsername
         public User getUserNameFromDB(string name)
         {
             MySqlConnection conn = new MySqlConnection(_connectionstring);
@@ -129,6 +129,23 @@ namespace Jaartaak.Persistance
             }
             conn.Close();
             return result;
+        }
+
+        public void AddUserToOrg(int orgID, int userID)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionstring);
+            MySqlCommand cmd = new MySqlCommand("UPDATE databasenotities.gebruiker SET orgID = @orgID WHERE (`userID` = @userID)", conn);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@orgID", orgID);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while adding the user.", ex);
+            }
         }
     }
     

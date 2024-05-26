@@ -67,6 +67,7 @@
     <Content Include="BusinessLogin.aspx" />
     <Content Include="BusinessRegistration.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="MainBusinessPage.aspx" />
     <Content Include="MainLoggedInPage.aspx" />
     <Content Include="MainPage.aspx" />
     <Content Include="UserRegistration.aspx" />
@@ -93,6 +94,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainBusinessPage.aspx.cs">
+      <DependentUpon>MainBusinessPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainBusinessPage.aspx.designer.cs">
+      <DependentUpon>MainBusinessPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>

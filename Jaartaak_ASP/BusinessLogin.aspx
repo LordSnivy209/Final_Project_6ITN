@@ -10,24 +10,25 @@
                 <h2 class="text-center mb-4">Business Login</h2>
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group position-relative">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" runat="server" required />
-                        </div>
-                        <div class="form-group position-relative">
-                            <label for="password">Password</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="password" runat="server" required />
+                        <form runat="server">
+                            <div class="form-group position-relative">
+                                <label for="username">Business Name</label>
+                                <asp:TextBox type="text" class="form-control" ID="txtBusiness" runat="server" required="true" />
+                            </div>
+                            <div class="form-group position-relative">
+                                <asplabel for="password">Password</asplabel>
+                                <asp:TextBox type="password" class="form-control" ID="txtPassword" runat="server" required="true"></asp:TextBox>
                             </div>
                             <br />
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </div>
+                            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" class="btn btn-primary btn-block" />
+                        </form>
                     </div>
+                </div>
                 </div>
             </div>
 
         </div>
-    </div>
+    
 
 
 
