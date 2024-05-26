@@ -31,4 +31,17 @@
             </div>
         </div>
     </div>
+     <script type="text/javascript">
+        function getQueryStringParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        window.onload = function() {
+            const message = getQueryStringParameter('message');
+            if (message) {
+                alert(message);
+            }
+        }
+     </script>
 </asp:Content>

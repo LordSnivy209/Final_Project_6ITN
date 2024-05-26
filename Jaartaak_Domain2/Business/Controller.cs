@@ -37,8 +37,15 @@ namespace Jaartaak.Business
 
         public bool Register(int orgID, string username, string password)
         {
-            _registeredUser = _persCon.addUserToDB(orgID, username, password);
-            return _registeredUser != null;
+            try
+            {
+                _registeredUser = _persCon.addUserToDB(orgID, username, password);
+                return _registeredUser != null;
+            }
+            catch (Exception ex)
+            {
+                return _registeredUser == null;
+            }
         }//public bool Register(string username, string password)
         public List<Note> GetNotes()
         {

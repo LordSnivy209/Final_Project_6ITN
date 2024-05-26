@@ -50,11 +50,17 @@ namespace Jaartaak_ASP
             }
             else
             {//logs the user in DB then sends them to login page
-                _controller.Register(0, username, password);
-                Response.Write("<script>alert('Registration succesful!')</script>");
-                Response.Redirect("default.aspx");
+                if (_controller.Register(0, username, password))
+                {
+                    Response.Redirect("default.aspx?message=Registration succesful!");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Error: Username already exists.')</script>");
+                }
             }
-            //delete this sentence later
+
+            
         }
     }
 }
