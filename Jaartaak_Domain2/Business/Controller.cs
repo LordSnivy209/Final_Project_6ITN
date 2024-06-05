@@ -174,5 +174,10 @@ namespace Jaartaak.Business
             return _persCon.getOrgNotes(orgID);
         }
 
+        public List<Organisation> getOrgsFromDB()
+        {
+            return _persCon.getOrgsFromDB();
+        }
+
     }//public class busCon
 }

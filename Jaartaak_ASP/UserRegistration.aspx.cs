@@ -19,6 +19,7 @@ namespace Jaartaak_ASP
             if (IsPostBack)
             {
                 _controller = (Controller)HttpContext.Current.Session["_controller"];
+
             }
             else
             {
@@ -32,12 +33,11 @@ namespace Jaartaak_ASP
                     _controller = (Controller)HttpContext.Current.Session["_controller"];
                 }
             }
-
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            // Retrieve user input
+            // Retrieve user input                  
             string username = fullName.Value;
             string password = lblPassword.Value;
             string confirmPassword = lblConfirmPassword.Value;

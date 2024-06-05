@@ -23,7 +23,7 @@ namespace Jaartaak_ASP
                 {
                     _controller = new Controller();
                     HttpContext.Current.Session["_controller"] = _controller;
-                    Response.Redirect("default.aspx");
+                    Response.Redirect("MainPage.aspx");
                 }
                 else
                 {

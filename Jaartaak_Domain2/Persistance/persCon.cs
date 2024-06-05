@@ -20,10 +20,10 @@ namespace Jaartaak.Persistance
         //OrgMapper
         //may be useless but i'll keep it here for now
 
-        public List<Organisation> getOrgsFromDB(string orgName)
+        public List<Organisation> getOrgsFromDB()
         {
             OrgMapper mapper = new OrgMapper(_connectionstring);
-            return mapper.getOrgsFromDB(orgName);
+            return mapper.getOrgsFromDB();
 
         }
         //userMapper

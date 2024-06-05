@@ -18,7 +18,7 @@ namespace Jaartaak.Persistance
             _connectionString = connectionString;
         }
 
-        public List<Organisation> getOrgsFromDB(string orgName)
+        public List<Organisation> getOrgsFromDB()
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             //SELECT * FROM databasenotities.organisation;
