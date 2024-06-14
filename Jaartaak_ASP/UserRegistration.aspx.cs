@@ -56,7 +56,7 @@ namespace Jaartaak_ASP
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error: Username already exists.')</script>");
+                    Response.Write("<script>alert('Error: Username already exists...')</script>");
                 }
             }
 
